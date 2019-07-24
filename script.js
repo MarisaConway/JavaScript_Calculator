@@ -10,10 +10,10 @@ class Calculator {
         this.operation = undefined
 
     }
-    // delete() {
-    //     this.currentOperand = this.currentOperand.toString().slice(0, -1)
+    delete() {
+        this.currentOperand = this.currentOperand.toString().slice(0, -1)
 
-    // }
+    }
 
     appendNumber(number) {
         if (number === '.' && this.currentOperand.includes('.')) return
@@ -30,41 +30,43 @@ class Calculator {
         this.currentOperand = ''
     }
 
-    // compute() {
-    //     let computation
-    //     const prev = parseFloat(this.previousOperand)
-    //     const prev = parseFloat(this.currentOperand)
-    //     if (isNaN(prev) || isNaN(current)) return
-    //     switch (this.operation) {
-    //         case '+':
-    //             computation = prev + current
-    //             break
-    //             case '*':
-    //             computation = prev * current
-    //             break
-    //             case '-':
-    //             computation = prev - current
-    //             break
-    //             case '÷':
-    //             computation = prev / current
-    //             break
-    //             default:
-    //                 return
-    //     }
-    //     this.currentOperand = computation
-    //     this.operation = undefined
-    //     this.previousOperand = ''
-    // }
-    // getDisplayNumber(number) {
-    //     const floatNumber = parseFloat(number)
-    //     if(isNaN(floatNumber)) return ''
-    //     return number.toLocaleString('en')   
-    // }
+    compute() {
+        let computation
+        const prev = parseFloat(this.previousOperand)
+        const current = parseFloat(this.currentOperand)
+        if (isNaN(prev) || isNaN(current)) return
+        switch (this.operation) {
+            case '+':
+                computation = prev + current
+                break
+                case '*':
+                computation = prev * current
+                break
+                case '-':
+                computation = prev - current
+                break
+                case '÷':
+                computation = prev / current
+                break
+                default:
+                    return
+        }
+        this.currentOperand = computation
+        this.operation = undefined
+        this.previousOperand = ''
+    }
+    getDisplayNumber(number) {
+        const floatNumber = parseFloat(number)
+        if(isNaN(floatNumber)) return ''
+        return number.toLocaleString('en')   
+    }
 
 
     updateDisplay() {
         this.currentOperandTextElement.innerText = this.currentOperand
-        this.previousOperandTextElement.innerText = this.previousOperand
+        if (this.operation != null) {
+            this.previousOperandTextElement.innerText = `${this.previousOperand} ${this.operation}`
+        }
     }
 } 
 
