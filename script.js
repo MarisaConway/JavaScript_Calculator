@@ -20,15 +20,15 @@ class Calculator {
         this.currentOperand = this.currentOperand.toString() + number.toString()
     }
     
-    // chooseOperation(operation) {
-    //     if (this.currentOperand === '') return
-    //     if(this.previousOperand !== '') {
-    //         this.compute()
-    //     }
-    //     this.operation = operation
-    //     this.previousOperand = this.currentOperand
-    //     this.currentOperand = ''
-    // }
+    chooseOperation(operation) {
+        if (this.currentOperand === '') return
+        if(this.previousOperand !== '') {
+            this.compute()
+        }
+        this.operation = operation
+        this.previousOperand = this.currentOperand
+        this.currentOperand = ''
+    }
 
     // compute() {
     //     let computation
@@ -64,6 +64,7 @@ class Calculator {
 
     updateDisplay() {
         this.currentOperandTextElement.innerText = this.currentOperand
+        this.previousOperandTextElement.innerText = this.previousOperand
     }
 } 
 
